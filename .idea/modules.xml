@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Six_PTP_AModel/Six_PTP_AModel.iml" filepath="$PROJECT_DIR$/Six_PTP_AModel/Six_PTP_AModel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Six_PTP_Allover/Six_PTP_Allover.iml" filepath="$PROJECT_DIR$/Six_PTP_Allover/Six_PTP_Allover.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Six_PTP_Customer/Six_PTP_Customer.iml" filepath="$PROJECT_DIR$/Six_PTP_Customer/Six_PTP_Customer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Six_PTP_Util/Six_PTP_Util.iml" filepath="$PROJECT_DIR$/Six_PTP_Util/Six_PTP_Util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/six_ptp_provider_business/six_ptp_provider_business.iml" filepath="$PROJECT_DIR$/six_ptp_provider_business/six_ptp_provider_business.iml" />
+      <module fileurl="file://$PROJECT_DIR$/six_ptp_provider_leaguer/six_ptp_provider_leaguer.iml" filepath="$PROJECT_DIR$/six_ptp_provider_leaguer/six_ptp_provider_leaguer.iml" />
+    </modules>
+  </component>
+</project>

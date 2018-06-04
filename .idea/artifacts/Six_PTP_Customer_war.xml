@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Six_PTP_Customer:war">
+    <output-path>$PROJECT_DIR$/Six_PTP_Customer/target</output-path>
+    <root id="archive" name="Six_PTP_Customer.war">
+      <element id="artifact" artifact-name="Six_PTP_Customer:war exploded" />
+    </root>
+  </artifact>
+</component>

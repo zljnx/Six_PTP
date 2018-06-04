@@ -1,0 +1,308 @@
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xmlns="" xml:lang="zh-CN" lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="0"><meta property="qc:admins" content="36215751376367246375"/>
+    <meta property="wb:webmaster" content="e38aeae607353b18"/>
+    <title>用户登录</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+<link rel="stylesheet" type="text/css" href="css/user.css" />
+<link rel="stylesheet" type="text/css" href="css/base.css" />
+<script src="js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/wxLogin.js"></script>
+</head>
+<body>
+<div style="position:fixed; background:#fff; z-index:9999;width:100%;height:40px; overflow:hidden; display:block;" id='85dfb0ef-a7e8-4a10-a5d4-ecfdb14e111b'>
+	<div style='padding-left:28%;color: #c30;font-size:18px;'>
+		警告: 如果看到该信息,可能是因为您的浏览器没有启用JavaScript功能，请开启该功能并在重启后访问网站。
+	</div>
+</div>
+<script type="text/javascript">try{document.getElementById('85dfb0ef-a7e8-4a10-a5d4-ecfdb14e111b').style.display='none';}catch(e){}</script>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/user.js"></script>
+<script type="text/javascript" src="js/jquery-select-list.js"></script>
+<script type='text/javascript'>
+{
+    try {
+        var a = window.opener||window.parent;
+        while(a.parent!=a){
+            a = a.parent;
+        }
+        if(a.location.host!=''){
+            a.location.href='';
+        }
+    }catch(e){
+
+    }
+}
+var isTg = 'false';
+var escrowPrefix = 'ALLINPAY';
+var loginUrl = "";
+</script><script type="text/javascript" src="js/qc_loader.js"  data-appid="101173448" data-redirecturi=""  charset="utf-8"> </script>
+<script type="text/javascript" src="js/qc_loader.js" charset="utf-8" data-callback="true"></script>
+<script type="text/javascript">
+
+function pageSubmit(_obj){
+	if(setCurrentPage(_obj)){
+		toAjaxPage();
+	}
+}
+
+//输入分页，点确定查询时，设置当前页
+function setCurrentPage(_obj){
+	var currentPage1 = $(_obj).prev().val();
+	var re =  /^[1-9]+[0-9]*]*$/;
+	if(!re.test(currentPage1)){
+		return false;
+	}
+	currentPage = currentPage1;
+	if(currentPage>$(_obj).prev().attr("maxSize")*1){
+		currentPage = $(_obj).prev().attr("maxSize")*1;
+	}
+	currentPage = parseInt(currentPage);
+	return true;
+}
+
+function DMQQLogout(){
+	  //1 QQ退出
+	  QC.Login.signOut();
+	  //2 本地退出
+	  location.href = "/user/logout.htm";
+	}
+
+</script>
+<!--头部2-->
+<div class="login_header w1002 clearfix">
+
+   	<div class="logo_line fl"></div>
+    <div class="fl f24 gray6 welcome_t">欢迎登录</div>
+</div>
+<!--头部2--><form action="" method="post"
+      id="loginForm" name="loginForm" target="_self">
+    <input type="hidden" id="openId" name="openId" value=""/>
+    <input type="hidden" id="accessToken" name="accessToken" value=""/>
+    <input type="hidden" id="_z" name="_z" value=""/>
+    </form>
+
+<!--主体内容-->
+<div class="main_bg" style="padding:0px;">
+    <div class="login_bg login_page_box" id="RedBg" style="width: 100%; padding: 60px 0px; height: 600px; background-image: url("");">
+    	<a href="" id="RedBgURL" class="red_click" target="_blank"></a>
+            <div class="logindx_k login_mod clearfix">
+            	<div class="landing_port" >
+                <div class="login_hd"><span class="white f24 bold">用户登录</span></div>
+                <form action="/user/login.htm" method="post" onsubmit="return onSubmit();">
+                	<input type="hidden" id="_z" name="_z" value=""/>
+                    <div class="login_form form_appearance clearfix">
+                        <ul>
+                            <li class="item">
+                                <div class="con">
+                                    <div class="input focus_input">
+                                        <i class="name_ico fl"></i>
+                                        <input id="txtUserId" type="text" class="text text1 focus_text fl" maxlength="30"
+                                               value=""
+                                               onclick="hideError();"/><label for="txtUserId">用户名/邮箱/手机号</label>
+                                        <input id="userId" name="accountName" type="hidden"/>
+                                    </div>
+                                    <p class="prompt">&nbsp;</p>
+                              
+                                </div>
+                            </li>
+                            <li class="item">
+                               <div class="con">
+                                	<div class="wjmm_box">
+                                    	<div class="input focus_input">
+	                                        <i class="password_ico fl"></i>
+	                                        <input id="txtpasswordId" type="password" class="text text3 focus_text fl" maxlength="20"
+	                                               onselectstart="return false;" ondragenter="return false;"
+	                                               onpaste="return false;" onclick="hideError();" autocomplete="off"/><label for="txtpasswordId">密码</label>
+	                                        <input id="passwordId" name="password" type="hidden"/>
+                                   		</div>
+                                   		<a class="yellow_color wjmm_text agreement_t" href="http://112.95.233.249:8503/password/">忘记密码?</a>
+                                    	<p class="prompt">&nbsp;</p>
+                                    	</div>
+                                </div>
+                            </li>
+                            <li class="item pt5">
+                                <div class="con">
+                                	<label for="rememberId">
+                                    	<input id="rememberId" name="remember" type="checkbox" value="1" class="mr5" />记住用户名
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="con">
+                                    <button type="submit" class="login_bt mt10" style="cursor: pointer;">立即登录</button>
+                                 </div>
+                            </li>
+                    
+                        </ul>
+                    </div>
+                </form>
+            </div>
+            <div class="weChat_port" style="display:none;">
+            	<div class="login_hd clearfix">
+            		<a href="javascript:void(0);" class="fr yellow_color other_port pr50">其他登录方式</a>
+            	</div>
+            	<div class="weChat_pic clearfix" id="wx_login_container" style="text-align: center;"></div>
+            </div>
+            </div>
+    </div>
+</div>
+<!--主体内容-->
+
+<!--底部结束-->
+<!--第三方流量统计 start-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><!--第三方流量统计 end --><!--底部-->
+<script type="text/javascript" src="/user/js/security.js"></script>
+<script type="text/javascript">
+    var isNull = /^[\s]{0,}$/;
+    var verify = /^\d{6}$/;
+    var loginName = /^[a-z]([\w]*)$/i;
+    var testChinese = /.*[\u4e00-\u9fa5]+.*$/;
+    function hideError(){
+		 var p = $("#txtUserId").parent().parent().find("p");
+	        p.html("&nbsp;");
+	        p.removeClass("red");
+	}
+    function accountCheck() {
+        var val = $.trim($("#txtUserId").val());
+        var p = $("#txtUserId").parent().parent().find("p");
+        p.html("&nbsp;");
+        p.removeClass("red");
+        if (isNull.test(val)) {
+            p.html("用户名不能为空");
+            p.addClass("red");
+            return false;
+        }else if(testChinese.test(val)){
+            p.html("用户名不能为中文");
+            p.addClass("red");
+            return false;
+        }
+        return true;
+    }
+    function passwordCheck() {
+        var val = $("#txtpasswordId").val();
+        var p = $("#txtpasswordId").parent().parent().find("p");
+        p.html("&nbsp;");
+        p.removeClass("red");
+        if (isNull.test(val)) {
+            p.html("密码不能为空");
+            p.addClass("red");
+            return false;
+        }
+        return true;
+    }
+    function verifyCheck() {
+        //是否需要验证码.
+        var flag = true;
+        var isShowVcode = 'false';
+        if ((flag != "undefined" && flag == false) || isShowVcode=='false') {
+            return true;
+        }
+
+        var val = $("input[name='verifyCode']").val();
+        var p = $("#verifyError");
+        p.html("&nbsp;");
+        p.removeClass("red");
+        if (isNull.test(val)) {
+            p.html("验证码不能为空");
+            p.addClass("red");
+            return false;
+        } else if (!verify.test(val)) {
+            p.html("您输入的验证码有误");
+            p.addClass("red");
+            return false;
+        }
+        return true;
+    }
+    function onSubmit() {
+        if (accountCheck() && passwordCheck() && verifyCheck()) {
+            var modulus = "009e55b21b5b66a44b52a7e14844215b63ea7067b727fa1e729c7e7863c4654007128d046bba2e69121bfd70858947010430d3f953c55a46a8511ce4b296d51587f04e8e10caaf1ae59ab17a9a63eebb024bb524b5bbf2e5bfbe011f7c5518aa3c520445aaf444bc8471099822bdddfc33a4cfa84e009e104d033fcb4f6b4a293f", exponent = "010001";
+            var key = RSAUtils.getKeyPair(exponent, '', modulus);
+            $("#userId").val(RSAUtils.encryptedString(key, $.trim($("#txtUserId").val())));
+            $("#passwordId").val(RSAUtils.encryptedString(key, $("#txtpasswordId").val()));
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+</script>
+<style type="text/css">
+    iframe{margin-left: 90px;}
+</style>
+<script type="text/javascript">
+	/**微信登录**/
+	var obj = new WxLogin({
+	    id:"wx_login_container", 
+	    appid: "wx7f62699d9446c4c5", 
+	    scope: "snsapi_login", 
+	    redirect_uri: "",
+	    state: "7988d5b8d0db412db7d96ba9a85cebc4",
+	    style: "white",
+	    href: "http://112.95.233.249:8503/user/css/weixin.css"
+	});
+	
+    if (QC.Login.check()) {//如果已登录
+        QC.Login.signOut();
+        QC.Login.getMe(function (openId, accessToken) {
+            $("#openId").val(openId);
+            $("#accessToken").val(accessToken);
+            loginForm.submit();
+        });
+    }
+
+    WB2.anyWhere(function (W) {
+        W.widget.connectButton({
+            id: "tpa_login_sina",
+            type: "3,2",
+            callback: {
+                login: function (o) { //登录后的回调函数
+                    var status = WB2.checkLogin();
+                    if (status) {
+                        WB2.logout();
+                        $("#openId").val(o.id);
+                        clearTime = setInterval(function () {
+                            var status = WB2.checkLogin();
+                            if (status) {
+                                WB2.logout();
+                            } else {
+                                clearInterval(clearTime);
+                                loginForm.submit();
+                            }
+                        }, 1000);
+                    }
+                }
+            }
+        });
+    });
+</script>
+
+<script type="text/javascript">
+	var pic_list=[];
+	
+	pic_list.push({"img":"user/images/dlbg_pic.jpg","URL":"javascript:void(0);"});
+	
+	var picnum=Math.floor(Math.random()*pic_list.length);
+	$("#RedBg").css({"background-image":"url("+pic_list[picnum].img+")"});
+	if(pic_list[picnum].URL == "javascript:void(0);"||pic_list[picnum].URL == ""){
+		$("#RedBgURL").removeAttr("target");
+	}
+	$("#RedBgURL").attr("href",pic_list[picnum].URL);
+</script>
+</body>
+</html>

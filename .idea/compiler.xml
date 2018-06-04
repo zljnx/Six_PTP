@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Six_PTP_Allover" />
+        <module name="Six_PTP_AModel" />
+        <module name="Six_PTP_Customer" />
+        <module name="six_ptp_provider_business" />
+        <module name="six_ptp_provider_leaguer" />
+        <module name="Six_PTP_Util" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Six_PTP_Allover" target="1.5" />
+      <module name="Six_PTP_AModel" target="1.5" />
+      <module name="Six_PTP_Customer" target="1.7" />
+      <module name="six_ptp_provider_business" target="1.8" />
+      <module name="six_ptp_provider_leaguer" target="1.8" />
+      <module name="Six_PTP_Util" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
