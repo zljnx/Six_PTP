@@ -20,12 +20,12 @@ public class WhbAreaController {
    @RequestMapping("addGeRenArea")
     public String addGeRenArea(Personalloanintention personalloanintention){
        whbareasService.addGeRenArea(personalloanintention);
-       return "zs/shouye";
+       return "thisweb/shouye";
    }
 
    @RequestMapping("addQiYeArea")
    public String addQiYeArea(Personalloanintention personalloanintention){
        whbareasService.addQiYeArea(personalloanintention);
-       return "zs/shouye";
+       return "thisweb/shouye";
    }
 }

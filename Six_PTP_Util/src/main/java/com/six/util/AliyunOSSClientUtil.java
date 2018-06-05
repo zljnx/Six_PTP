@@ -14,7 +14,9 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -126,6 +128,7 @@ public class AliyunOSSClientUtil {
      * @return String 返回的唯一MD5数字签名
      * */
     public static  String uploadObject2OSS(OSSClient ossClient, MultipartFile file, String bucketName, String folder) {
+        String fileUrl = null;
         String resultStr = null;
         try {
             //MultipartFile转化为File类型
@@ -163,10 +166,14 @@ public class AliyunOSSClientUtil {
             PutObjectResult putResult = ossClient.putObject(bucketName, folder + newfileName, is, metadata);
             //解析结果
             resultStr = putResult.getETag();
+
+            Date expiration=new Date(System.currentTimeMillis()+ 3600 * 1000 * 24 * 3);
+            URL url = ossClient.generatePresignedUrl(bucketName, folder + newfileName, expiration);
+            fileUrl=url.toString();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return resultStr;
+        return fileUrl;
     }
     public static void downFile(OSSClient ossClient, String fileUrl, HttpServletRequest request,HttpServletResponse response ) throws Exception{
         String url = fileUrl.substring(fileUrl.lastIndexOf(FOLDER));

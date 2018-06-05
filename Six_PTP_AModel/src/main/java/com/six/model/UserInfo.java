@@ -81,9 +81,115 @@ public class UserInfo implements Serializable {
     private BigDecimal purchase_price;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date subscription_time;
-    /*
-        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-     */
+    private Integer car_id;
+    private String license_platenumbe;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date car_year;
+    private Integer car_price;
+    private String car_brand;
+    private Integer car_assess_price;
+    private Integer property_id;
+    private String village_name;
+    private Integer construction_area;
+    private Integer property_price;
+    private String property_address;
+    private String property_number;
+    private String use_number_year;
+    private String property_assess_price;
+    private String property_area;
+    private String reference_price;
+    private String filename;
+    private String dealpwd;
+    private String logontype;
+    private Double yue;
+
+    public Double getYue() {
+        return yue;
+    }
+
+    public void setYue(Double yue) {
+        this.yue = yue;
+    }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "id='" + id + '\'' +
+                ", loginname='" + loginname + '\'' +
+                ", userpwd='" + userpwd + '\'' +
+                ", username='" + username + '\'' +
+                ", userphone='" + userphone + '\'' +
+                ", idcard='" + idcard + '\'' +
+                ", eamil='" + eamil + '\'' +
+                ", status=" + status +
+                ", sendtime=" + sendtime +
+                ", sex=" + sex +
+                ", birthdate=" + birthdate +
+                ", defriend='" + defriend + '\'' +
+                ", riskassess=" + riskassess +
+                ", assesscount=" + assesscount +
+                ", workid='" + workid + '\'' +
+                ", educationid='" + educationid + '\'' +
+                ", workstatus=" + workstatus +
+                ", companyname='" + companyname + '\'' +
+                ", addrid='" + addrid + '\'' +
+                ", companytype='" + companytype + '\'' +
+                ", companyscale=" + companyscale +
+                ", eid='" + eid + '\'' +
+                ", school='" + school + '\'' +
+                ", entrancedate=" + entrancedate +
+                ", graduationdate=" + graduationdate +
+                ", major='" + major + '\'' +
+                ", schoolinfo='" + schoolinfo + '\'' +
+                ", areaid='" + areaid + '\'' +
+                ", areaname='" + areaname + '\'' +
+                ", pid='" + pid + '\'' +
+                ", reviewid='" + reviewid + '\'' +
+                ", reviewtype=" + reviewtype +
+                ", necertification=" + necertification +
+                ", certificationcount=" + certificationcount +
+                ", certificationstatus=" + certificationstatus +
+                ", certificationdate=" + certificationdate +
+                ", borrowing_id=" + borrowing_id +
+                ", borrowing_number='" + borrowing_number + '\'' +
+                ", borrowing_title='" + borrowing_title + '\'' +
+                ", annual_interest_rate='" + annual_interest_rate + '\'' +
+                ", borrowing_amount=" + borrowing_amount +
+                ", investment_amount=" + investment_amount +
+                ", time_limit=" + time_limit +
+                ", borrowing_time=" + borrowing_time +
+                ", borrowing_stateType_id=" + borrowing_stateType_id +
+                ", investment_time=" + investment_time +
+                ", payment_amount=" + payment_amount +
+                ", pay_back_amount=" + pay_back_amount +
+                ", overdue_periods=" + overdue_periods +
+                ", claim_number='" + claim_number + '\'' +
+                ", transfer_nper=" + transfer_nper +
+                ", rights_value=" + rights_value +
+                ", purchase_price=" + purchase_price +
+                ", subscription_time=" + subscription_time +
+                ", car_id=" + car_id +
+                ", license_platenumbe='" + license_platenumbe + '\'' +
+                ", car_year=" + car_year +
+                ", car_price=" + car_price +
+                ", car_brand='" + car_brand + '\'' +
+                ", car_assess_price=" + car_assess_price +
+                ", property_id=" + property_id +
+                ", village_name='" + village_name + '\'' +
+                ", construction_area=" + construction_area +
+                ", property_price=" + property_price +
+                ", property_address='" + property_address + '\'' +
+                ", property_number='" + property_number + '\'' +
+                ", use_number_year='" + use_number_year + '\'' +
+                ", property_assess_price='" + property_assess_price + '\'' +
+                ", property_area='" + property_area + '\'' +
+                ", reference_price='" + reference_price + '\'' +
+                ", filename='" + filename + '\'' +
+                ", dealpwd='" + dealpwd + '\'' +
+                ", logontype='" + logontype + '\'' +
+                ", yue=" + yue +
+                '}';
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -521,63 +627,155 @@ public class UserInfo implements Serializable {
         this.subscription_time = subscription_time;
     }
 
-    @Override
-    public String toString() {
-        return "UserInfo{" +
-                "id='" + id + '\'' +
-                ", loginname='" + loginname + '\'' +
-                ", userpwd='" + userpwd + '\'' +
-                ", username='" + username + '\'' +
-                ", userphone='" + userphone + '\'' +
-                ", idcard='" + idcard + '\'' +
-                ", eamil='" + eamil + '\'' +
-                ", status=" + status +
-                ", sendtime=" + sendtime +
-                ", sex=" + sex +
-                ", birthdate=" + birthdate +
-                ", defriend='" + defriend + '\'' +
-                ", riskassess=" + riskassess +
-                ", assesscount=" + assesscount +
-                ", workid='" + workid + '\'' +
-                ", educationid='" + educationid + '\'' +
-                ", workstatus=" + workstatus +
-                ", companyname='" + companyname + '\'' +
-                ", addrid='" + addrid + '\'' +
-                ", companytype='" + companytype + '\'' +
-                ", companyscale=" + companyscale +
-                ", eid='" + eid + '\'' +
-                ", school='" + school + '\'' +
-                ", entrancedate=" + entrancedate +
-                ", graduationdate=" + graduationdate +
-                ", major='" + major + '\'' +
-                ", schoolinfo='" + schoolinfo + '\'' +
-                ", areaid='" + areaid + '\'' +
-                ", areaname='" + areaname + '\'' +
-                ", pid='" + pid + '\'' +
-                ", reviewid='" + reviewid + '\'' +
-                ", reviewtype=" + reviewtype +
-                ", necertification=" + necertification +
-                ", certificationcount=" + certificationcount +
-                ", certificationstatus=" + certificationstatus +
-                ", certificationdate=" + certificationdate +
-                ", borrowing_id=" + borrowing_id +
-                ", borrowing_number='" + borrowing_number + '\'' +
-                ", borrowing_title='" + borrowing_title + '\'' +
-                ", annual_interest_rate='" + annual_interest_rate + '\'' +
-                ", borrowing_amount=" + borrowing_amount +
-                ", investment_amount=" + investment_amount +
-                ", time_limit=" + time_limit +
-                ", borrowing_time=" + borrowing_time +
-                ", borrowing_stateType_id=" + borrowing_stateType_id +
-                ", investment_time=" + investment_time +
-                ", payment_amount=" + payment_amount +
-                ", pay_back_amount=" + pay_back_amount +
-                ", overdue_periods=" + overdue_periods +
-                ", claim_number='" + claim_number + '\'' +
-                ", transfer_nper=" + transfer_nper +
-                ", rights_value=" + rights_value +
-                ", purchase_price=" + purchase_price +
-                ", subscription_time=" + subscription_time +
-                '}';
+    public Integer getCar_id() {
+        return car_id;
+    }
+
+    public void setCar_id(Integer car_id) {
+        this.car_id = car_id;
+    }
+
+    public String getLicense_platenumbe() {
+        return license_platenumbe;
+    }
+
+    public void setLicense_platenumbe(String license_platenumbe) {
+        this.license_platenumbe = license_platenumbe;
+    }
+
+    public Date getCar_year() {
+        return car_year;
+    }
+
+    public void setCar_year(Date car_year) {
+        this.car_year = car_year;
+    }
+
+    public Integer getCar_price() {
+        return car_price;
+    }
+
+    public void setCar_price(Integer car_price) {
+        this.car_price = car_price;
+    }
+
+    public String getCar_brand() {
+        return car_brand;
+    }
+
+    public void setCar_brand(String car_brand) {
+        this.car_brand = car_brand;
+    }
+
+    public Integer getCar_assess_price() {
+        return car_assess_price;
+    }
+
+    public void setCar_assess_price(Integer car_assess_price) {
+        this.car_assess_price = car_assess_price;
+    }
+
+    public Integer getProperty_id() {
+        return property_id;
+    }
+
+    public void setProperty_id(Integer property_id) {
+        this.property_id = property_id;
+    }
+
+    public String getVillage_name() {
+        return village_name;
+    }
+
+    public void setVillage_name(String village_name) {
+        this.village_name = village_name;
+    }
+
+    public Integer getConstruction_area() {
+        return construction_area;
+    }
+
+    public void setConstruction_area(Integer construction_area) {
+        this.construction_area = construction_area;
+    }
+
+    public Integer getProperty_price() {
+        return property_price;
+    }
+
+    public void setProperty_price(Integer property_price) {
+        this.property_price = property_price;
+    }
+
+    public String getProperty_address() {
+        return property_address;
+    }
+
+    public void setProperty_address(String property_address) {
+        this.property_address = property_address;
+    }
+
+    public String getProperty_number() {
+        return property_number;
+    }
+
+    public void setProperty_number(String property_number) {
+        this.property_number = property_number;
+    }
+
+    public String getUse_number_year() {
+        return use_number_year;
+    }
+
+    public void setUse_number_year(String use_number_year) {
+        this.use_number_year = use_number_year;
+    }
+
+    public String getProperty_assess_price() {
+        return property_assess_price;
+    }
+
+    public void setProperty_assess_price(String property_assess_price) {
+        this.property_assess_price = property_assess_price;
+    }
+
+    public String getProperty_area() {
+        return property_area;
+    }
+
+    public void setProperty_area(String property_area) {
+        this.property_area = property_area;
+    }
+
+    public String getReference_price() {
+        return reference_price;
+    }
+
+    public void setReference_price(String reference_price) {
+        this.reference_price = reference_price;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public String getDealpwd() {
+        return dealpwd;
+    }
+
+    public void setDealpwd(String dealpwd) {
+        this.dealpwd = dealpwd;
+    }
+
+    public String getLogontype() {
+        return logontype;
+    }
+
+    public void setLogontype(String logontype) {
+        this.logontype = logontype;
     }
 }

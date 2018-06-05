@@ -69,11 +69,10 @@
                     success:function(data){
 
                         for(var i = 0 ; i < data.length ; i++){
-                            names.push(data[i].c_huanmoney);
-
                             nums.push(data[i].c_huanmoney);
                             nums.push(data[i].c_shengmoney);
-                        }
+                            names.reduce(data[i].id)
+                        }6
 
                         myChart.hideLoading();
                         myChart.setOption({

@@ -63,8 +63,9 @@ public class LxgCorporateController {
     public String LxgLogin(String loginname, String userpwd, HttpSession session) {
         int count = lxgCorporateService.LxgLogin(loginname, userpwd);
         if (count == 1) {
-            List<UserInfo> list = lxgCorporateService.queryLogin(loginname, userpwd);
-            session.setAttribute("list", "list");
+            List<UserInfo> listuser = lxgCorporateService.queryLogin(loginname, userpwd);
+            System.out.print(listuser);
+            session.setAttribute("listuser", listuser.get(0));
             return "kk";
         } else {
             return "gg";

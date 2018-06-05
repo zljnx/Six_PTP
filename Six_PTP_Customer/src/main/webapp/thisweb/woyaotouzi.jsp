@@ -98,7 +98,6 @@
 <div class="top-container">
     <div class="wrap">
         <div class="top-center">
-            <div class="logo-container"><a href="#"><img src="/images/logo.jpg" title="黄金杯网贷"></a></div>
             <div class="clearfix">
                 <div class="head-container clearfix">
                     <div class="head-login-container">
@@ -129,23 +128,16 @@
             </div>
             <div class="top-nav clearfix">
                 <ul class="clearfix">
-                    <li><a href="<%=request.getContextPath()%>/thisweb/shouye.jsp" class="nav-a">首页</a></li>
+                    <li><a href="<%=request.getContextPath()%>/index.html" class="nav-a">首页</a></li>
                     <li>
                         <a class="nav-a" href="<%=request.getContextPath()%>/thisweb/woyaotouzi.jsp">我要投资</a>
-                        <dl class="subnav">
-                            <dd><a href="http://112.95.233.249:8503/financing/sbtz/">投资项目</a></dd>
-                            <dd><a href="http://112.95.233.249:8503/financing/sbtz/index.html?btype=3">债权转让</a></dd>
-                        </dl>
+
                     </li>
-                    <li><a href="http://112.95.233.249:8503/credit/" class="nav-a">我要借款</a>
-                        <dl class="subnav">
-                            <dd><a href="http://112.95.233.249:8503/credit/xjd/">信用贷</a></dd>
-                            <dd><a href="http://112.95.233.249:8503/credit/dkyx.html">个人借款</a></dd>
-                            <dd><a href="http://112.95.233.249:8503/credit/qydkyx.html">企业借款</a></dd>
-                        </dl>
+                    <li><a href="/thisweb/WhbJingTai.html" class="nav-a">我要借款</a>
+
                     </li>
-                    <li class="item"><div class="nav"><a href="http://112.95.233.249:8503/xxpl/baxx.html">信息披露</a></div></li>
-                    <li><a href="http://112.95.233.249:8503/user/" class="nav-a">我的账户</a></li>
+
+                    <li><a href="/thisweb/lzhAccount.html" class="nav-a">我的账户</a></li>
                 </ul>
             </div>
         </div>
@@ -231,10 +223,9 @@
 <div class="footer">
     <div class="wrap clearfix">
         <div class="info fl">
-            <div class="footer_logo"><a href="http://112.95.233.249:8503"><img src="../images/footer_logo.png"></a></div>
-            <p class="mt10"><span class="f24 arial bold">400 - 678 - 5518</span>(9:00 - 18:00)</p>
-            <p class="address">服务邮箱：kefu@dimeng.net<br>
-                广东省深圳市罗湖区振业大厦28楼</p>
+            <p class="mt10"><span class="f24 arial bold">13126568505</span>(9:00 - 18:00)</p>
+            <p class="address">服务邮箱：963658059@qq.com<br>
+                北京市海淀区西三旗明园大学</p>
         </div>
         <div class="line"></div>
         <div class="focus">

@@ -138,10 +138,18 @@
                 }
             });
         });
+        //监听工具条
+        table.on('tool(demo)', function(obj){
+            var data = obj.data;
+            if(obj.event === 'detail'){
+                location.href="<%=request.getContextPath()%>/lzhCorporateInfo/downBaoquan.do?b_id="+data.b_id;
+            }
+        });
     });
     function daochu() {
         location.href="<%=request.getContextPath()%>/contract/daochu.do";
     }
+
 </script>
 </body>
 </html>

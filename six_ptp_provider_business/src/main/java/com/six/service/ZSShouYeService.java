@@ -1,11 +1,7 @@
 package com.six.service;
 
-import com.six.model.Borrowingmanagement;
-import com.six.model.Debenturetransfer;
-import com.six.model.UserInfo;
-import com.six.model.ZSTongJi;
+import com.six.model.*;
 import com.six.util.PageModel;
-import org.apache.solr.client.solrj.SolrServerException;
 
 import java.io.IOException;
 import java.util.List;
@@ -16,12 +12,21 @@ public interface ZSShouYeService {
 
     List<Debenturetransfer> zhaiquanzhuanrang() throws Exception;
 
+    PageModel<Borrowingmanagement> solrListByPage(Borrowingmanagement borr, PageModel pageModel) throws IOException;
+
     List<Borrowingmanagement> paihang() throws  Exception;
 
     List<Borrowingmanagement> tuijian() throws Exception;
 
-    PageModel<Borrowingmanagement> solrListByPage(Borrowingmanagement borr, PageModel pageModel) throws IOException, SolrServerException;
-
     ZSTongJi tongji() throws Exception;
 
+    ShouYeXiangQing xiangqing(String xiangqing) throws Exception;
+
+    UserInfo mimayanzheng(String mima, String userid);
+
+    void shenqingtouzi(String userid, String jine, String jkid);
+
+    void updatajiekuan(String jkid, String jine);
+
+    void sorladd(Borrowingmanagement borrowingmanagement);
 }

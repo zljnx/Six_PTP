@@ -9,7 +9,7 @@ public interface ZSPersonalloanintentionService {
 
     long queryCount(Personalloanintention personalloanintention) throws Exception;
 
-    void gerenchuli(String dispose, String grjkid,String loginname,String username) throws Exception;
+    void gerenchuli(String dispose, String grjkid, String loginname, String username) throws Exception;
 
     Personalloanintention gerenxiangqing(String grjkid) throws Exception;
 

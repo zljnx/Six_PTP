@@ -3,9 +3,7 @@ package com.six.controller;
 
 
 
-import com.six.model.Borrowingmanagement;
-import com.six.model.Debenturetransfer;
-import com.six.model.ZSTongJi;
+import com.six.model.*;
 import com.six.service.ZSShouYeService;
 import com.six.util.HttpUtil;
 import com.six.util.PageModel;
@@ -81,10 +79,12 @@ public class ZSShouYeController {
     }
 
     @RequestMapping("/xiangqing")
-    public String xiangqing(String xiangqing){
+    public String xiangqing(String xiangqing,Model model) throws Exception {
 
+        ShouYeXiangQing syxq =  shouYeService.xiangqing(xiangqing);
+        model.addAttribute("xiangqing",syxq);
 
-        return "zs/xiangqing";
+        return "thisweb/xiangqingye";
     }
 
     @RequestMapping("/paihang")
@@ -144,5 +144,18 @@ public class ZSShouYeController {
         ZSTongJi tongji =  shouYeService.tongji();
 
         return tongji;
+    }
+
+    @RequestMapping("/mimayanzheng")
+    @ResponseBody
+    public String mimayanzheng(String mima,String userid,String jine,String jkid){
+       UserInfo user =  shouYeService.mimayanzheng(mima,userid);
+       if(user != null){
+           shouYeService.shenqingtouzi(userid,jine,jkid);
+           shouYeService.updatajiekuan(jkid,jine);
+           return "yes";
+       }else{
+           return "no";
+       }
     }
 }

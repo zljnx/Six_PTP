@@ -2,6 +2,7 @@ package com.six.controller;
 
 import com.six.model.Borrowingmanagement;
 import com.six.service.ZSLoansService;
+import com.six.service.ZSShouYeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,8 @@ public class ZSLoansController {
 
     @Autowired
     private ZSLoansService loansService;
+    @Autowired
+    private ZSShouYeService shouYeService;
 
     @RequestMapping("/loanslist")
     @ResponseBody
@@ -79,11 +82,11 @@ public class ZSLoansController {
     }
 
     @RequestMapping("/addjiekuan")
-    @ResponseBody
     public String addjiekuan(Borrowingmanagement borrowingmanagement) throws Exception {
-        loansService.addjiekuan(borrowingmanagement);
-        System.out.println(borrowingmanagement);
-        return "zs/gerenjiekuan.jsp";
+        Borrowingmanagement bw = loansService.addjiekuan(borrowingmanagement);
+        System.out.println(bw);
+        shouYeService.sorladd(bw);
+        return "zs/jiekuanguanli";
     }
 
     @RequestMapping("/xiangqing")

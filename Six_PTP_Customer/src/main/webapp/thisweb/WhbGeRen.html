@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="/js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="/thisweb/geo.js"></script>
+    <link rel="stylesheet" type="text/css" href="/simple/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/simple/css/front.css" />
+    <link rel="stylesheet" type="text/css" href="/simple/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="/simple/css/disclosure.css" />
+</head>
+<body onload="setup();preselect('北京市');promptinfo();">
+<section>
+    <fieldset>
+
+<form action="/area/addGeRenArea.do"  method="post">
+    <input type="hidden" name="2c894a14-9399-41cb-9a23-c340819b4565" value="ddce12a5-0a3a-44ae-891b-af6f4432ce0b"><div class="main_bg">
+    <div class="main_mod">
+        <div class="main_hd"><i class="icon"></i><span class="gray3 f18">借款意向（个人）</span></div>
+        <div class="ml30 lh28 pt10 mr30">
+            <span class="highlight">提示</span> <br/>
+            提示
+            1.由于业务原因，黄金杯网贷目前只支持全国部分城市的借款业务；
+            2.请仔细填写您的真实信息，我们将与您取得联系；</div>
+        <div class="main_hd02 mt30">借款意向填写</div>
+        <div class="main_form mt50">
+            <ul>
+                <li class="item">
+                    <div class="til"><span class="red">*</span>联系人：</div>
+                    <div class="con">
+                        <input name="username" required pattern="[\u4e00-\u9fa5]{2,32}" type="text" class="text required max-length-32" oninvalid="validatelt(this,'联系不能是数字，且长度不小于2')"/>
+
+                        <p tip class="prompt"><span class="gray9">不超过32个字</span></p>
+
+                        <p errortip class="prompt" style="display: none"></p>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="til"><span class="red">*</span>手机号码：</div>
+                    <div class="con">
+                        <input name="userphone" type="text" class="text required phonenumber" maxlength="11" required  pattern="1[34578]\d{9}$"  oninvalid="validatelt(this,'电话号只能是11位的整数')"/>
+
+                        <p tip class="prompt"></p>
+
+                        <p errortip class="prompt" style="display: none"></p>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="til"><span class="red">*</span>意向借款金额：</div>
+                    <div class="con">
+                        <input name="grAmount" maxlength="15" type="text" class="text required isint mulriple-100 min-size-100" required  pattern="[0-9]{0,10}"  oninvalid="validatelt(this,'只能是数字')"/>元
+                        <p tip class="prompt"></p>
+
+                        <p errortip class="prompt" style="display: none"></p>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="til"><span class="red">*</span>借款期限：</div>
+                    <div class="con">
+                        <input type="text" class="text required min-size-1 max-size-24" name="grdeadline" required  pattern="[1-9]{1,2}"  oninvalid="validatelt(this,'只能是整月,一到24个月')"/>个月（1-24个月）
+                        <p tip class="prompt"></p>
+                        <p errortip class="prompt" style="display: none"></p>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="til">借款类型：</div>
+                    <div class="con">
+                        <input type="checkbox" name="grjktype" value="1" class="mr5"/>抵押
+                        <input type="checkbox" name="grjktype" value="2" class="ml20 mr5"/>实地认证
+                        <input type="checkbox" name="grjktype" value="3" class="ml20 mr5"/>担保
+                        <p class="prompt"></p>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="til"><span class="red">*</span>所在城市：</div>
+                    <div class="con" id="region">
+                        <select class="" name="province" id="s1">
+                            <option id="sheng"></option>
+                        </select>
+                        <select class="" name="city" id="s2">
+                            <option id="shi"></option>
+                        </select>
+                        <select class="" name="town" id="s3">
+                            <option  id="xian"></option>
+                        </select>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="til">预期筹款期限：</div>
+                    <div class="con"><select name="grFundraisingdeadline" class="select2" id="F09">
+                        <option value=" ">请选择</option>
+                        <option value="7天之内">7天之内</option>
+                        <option value="15天之内">15天之内</option>
+                        <option value="15-30天">15-30天</option>
+                        <option value="1-3个月">1-3个月</option>
+                        <option value="其他期限">其他期限</option>
+                    </select>
+
+                        <p tip class="prompt"></p>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="til lh24"><span class="red">*</span>借款描述：<br/><span
+                            class="gray9 f12">(20-500字)</span></div>
+                    <div class="con"><textarea name="grjkdescribe" cols="65" rows="6" style="max-width: 710px;"
+                                               class="textarea required min-length-20 max-length-500" required pattern="[u4e00-u9fa5]{20,10000}" oninvalid="validatelt(this,'不能少于20个字')"> </textarea>
+
+                        <p tip class="prompt"></p>
+
+                        <p errortip class="prompt" style="display: none"></p>
+                    </div>
+
+                <li class="item">
+                    <div class="til">&nbsp;</div>
+                    <div class="con">
+                        <input name="iAgree" onclick="checkoxBtn();" type="checkbox" id="iAgree" class="m_cb"/>&nbsp;<label for="iAgree">我已阅读并同意</label>
+                        <a target="_blank"
+                           href="/term/GRXXCQSQTK.html"
+                           class="highlight">《个人信息采集授权条款》</a>
+                    </div>
+                <li/>
+
+                <li class="item mb50">
+                    <div class="til">&nbsp;</div>
+                    <div class="con"><input type="submit"  class="btn07 btn_pink " value="提  交"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</form>
+    </fieldset>
+</section>
+</body>
+<script type="text/javascript">
+    function promptinfo()
+    {
+       /*/!* var address = document.getElementById('address').value;
+        var s1 = document.getElementById('s1').value;
+        var s2 = document.getElementById('s2').value;
+        var s3 = document.getElementById('s3').value;
+        address=""+s1+ s2 + s3;
+        return address;*!/*/
+
+    }
+    //对悬浮窗的设置
+    function validatelt(inputelement,err){
+        if(inputelement.validity.patternMismatch){
+            inputelement.setCustomValidity(err);
+            //错误后就清空，不过执行顺序有点问题就不要了
+//                if(confirm("输入有误,是否清空此项？")){
+//                    inputelement.value="";
+//                }
+        }else{
+            inputelement.setCustomValidity("");
+            return true;
+        }
+    }
+</script>
+</html>

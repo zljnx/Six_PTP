@@ -2,6 +2,7 @@ package com.six.dao;
 
 import com.six.model.Borrowingmanagement;
 import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.mapping.StatementType;
 
 import java.util.List;
 
@@ -92,13 +93,14 @@ public interface ZSLoansMapper {
     @Insert(" insert into p2p_borrowingmanagement(jksignid,productname,jkBorrowingtitle " +
             " ,loginname,jkAmount,Investmentamount,jkapr,jkdeadline,refundtype,biaoproperty," +
             " borrowingtype,accounttype,identifytype,scheme,awardlilv,paymenttype,valuedate,makeabargain,investguanli,overdue," +
-            " raisefunds,maxamount,province,city,area,modeactivity,csorbs,describea)" +
+            " raisefunds,maxamount,province,city,area,modeactivity,csorbs,describea,haixuzijin,jkstatus)" +
             " value(uuid()," +
             " #{productname},#{jkBorrowingtitle},#{loginname},#{jkAmount},#{Investmentamount},#{jkapr}," +
             " #{jkdeadline},#{refundtype},#{biaoproperty},#{borrowingtype},#{accounttype},#{identifytype}," +
             " #{source},#{awardlilv},#{paymenttype},#{valuedate},#{makeabargain},#{investguanli},#{overdue}," +
-            " #{raisefunds},#{maxamount},#{province},#{city},#{area},#{modeactivity},#{csorbs},#{describea} ) ")
-    void addjiekuan(Borrowingmanagement borrowingmanagement);
+            " #{raisefunds},#{maxamount},#{province},#{city},#{area},#{modeactivity},#{csorbs},#{describea},#{jkAmount},#{jkstatus} ) ")
+    @SelectKey(statement="SELECT LAST_INSERT_ID() AS id", keyProperty="jkid", before=false, resultType=Integer.class)
+    Integer addjiekuan(Borrowingmanagement borrowingmanagement);
 
     @Select(" select * from p2p_borrowingmanagement where jkid=#{jkid} ")
     Borrowingmanagement xiangqing(String jkid);

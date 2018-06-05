@@ -1,8 +1,6 @@
 package com.six.service;
 
-import com.six.model.Amount;
-import com.six.model.CorporateInfo;
-import com.six.model.UserInfo;
+import com.six.model.*;
 
 import java.util.List;
 
@@ -144,4 +142,54 @@ public interface LzhUserInfoService {
      * @return java.util.List
      */
     List<Amount> queryTreportforms(String id);
+    /**
+     * @Author 李中豪
+     * @Description TODO
+     * @Date 2018/5/31 22:45
+     * @Param [userInfo]
+     * @return com.six.model.UserInfo
+     */
+    UserInfo queryUserInfoh(UserInfo userInfo);
+    /**
+     * @Author 李中豪
+     * @Description TODO
+     * @Date 2018/6/1 11:56
+     * @Param [fileUrl]
+     * @return void
+     */
+    void saveUserPhoto(String fileUrl, UserInfo userInfo);
+    /**
+     * @Author 李中豪
+     * @Description TODO
+     * @Date 2018/6/3 16:27
+     * @Param [id]
+     * @return java.util.List<com.six.model.UserInfo>
+     */
+    List<UserInfo> queryUserImg(String id);
+    /**
+     * @Author 李中豪
+     * @Description TODO
+     * @Date 2018/6/4 9:18
+     * @Param [userInfo]
+     * @return void
+     */
+    void uploadMainInfo(UserInfo userInfo);
+    /**
+     * @Author 李中豪
+     * @Description TODO:查询密码是否一致
+     * @Date 2018/6/4 15:36
+     * @Param [userMain]
+     * @return java.util.List<com.six.model.UserInfo>
+     */
+    List<UserInfo> queryUserMainByPwd(UserMain userMain);
+    /**
+     * @Author 李中豪
+     * @Description TODO：修改密码
+     * @Date 2018/6/4 15:37
+     * @Param [userMain]
+     * @return void
+     */
+    void updateUserMainPwd(UserMain userMain);
+
+    List<UserSex> queryUserSex();
 }

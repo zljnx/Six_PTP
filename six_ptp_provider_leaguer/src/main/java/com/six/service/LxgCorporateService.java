@@ -28,5 +28,5 @@ public interface LxgCorporateService {
     List<UserInfo> queryLogin(String loginname, String userpwd);
    //注册
 
-    String saveuserinfo(UserInfo userInfo);
+    String saveuserinfo(UserInfo userInfo) throws Exception;
 }

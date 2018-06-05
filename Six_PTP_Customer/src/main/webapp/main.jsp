@@ -20,7 +20,22 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/layui/css/layui.css" media="all" />
     <script type="text/javascript" src="<%=request.getContextPath()%>/layui/lay/modules/layer.js"></script>
     <link  rel="stylesheet" href="<%=request.getContextPath()%>/layui/css/modules/layer/default/layer.css" />
-
+    <script>
+        $(document).ready(function(){
+            //要执行的js代码段
+            $.ajax({
+                url:"/lzhUserInfo/queryUserImg.do?id="+${sessionScope.adminSession.id},
+                type:"post",
+                dataType: "json",
+                success:function(data){
+                    $(".layui-nav-img").attr("src",data[0].filename);
+                },
+                error:function(){
+                    alert("图片回显失败")
+                }
+            })
+        });
+    </script>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
@@ -34,20 +49,20 @@
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a href="javascript:;">
-                    <img src="<%=request.getContextPath()%>/images/favicon.ico" class="layui-nav-img">
+                    <img src="" class="layui-nav-img">
                     ${sessionScope.adminSession.loginname}
                 </a>
                 <dl class="layui-nav-child">
                     <dd>
-                        <a class="infoUpdate"><cite>基本资料</cite></a>
+                        <a class="infoUpdate"><i class="layui-icon layui-icon-username" style="font-size: 15px; color: #000000;"></i>&nbsp;<cite>基本资料</cite></a>
                     </dd>
                     <dd>
-                        <a class="pwdUpdate"><cite>安全设置</cite></a>
+                        <a class="pwdUpdate"><i class="layui-icon layui-icon-auz" style="font-size: 15px; color: #000000;"></i>&nbsp;<cite>安全设置</cite></a>
                     </dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="#"><i class="iconfont icon-Icon_logout"></i><cite> 退出</cite></a>
+                <a href="logout.jsp"  target="_top"><i class="iconfont icon-Icon_logout"></i><cite> 退出</cite></a>
             </li>
         </ul>
     </div>
@@ -62,22 +77,14 @@
                &lt;%&ndash; <p>您好，${sessionScope.adminSession.loginname} 欢迎登陆！</p>&ndash;%&gt;
             </div>--%>
             <!-- 左侧导航区域（可配合layui已有的垂直导航）layui-nav-itemed -->
-           <ul class="layui-nav layui-nav-tree" lay-filter="menutrees" id="menutrees">
-
-                </ul>
-
-
-
+           <ul class="layui-nav layui-nav-tree" lay-filter="menutrees" id="menutrees"></ul>
         </div>
     </div>
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-
         <iframe name="ifre" src="<%=request.getContextPath()%>/zlj/index.jsp" scrolling="yes" width="100%" height="100%" frameborder="0" overflow="visible"></iframe>
     </div>
-
-
     <div class="layui-footer">
         <!-- 底部固定区域 -->
         <center>
@@ -85,7 +92,6 @@
         </center>
     </div>
 </div>
-
 <script type="text/javascript">
     //JavaScript代码区域
     layui.use(['element','tree'],function(){
@@ -119,7 +125,29 @@
             area : [ '500px', '500px' ],
             title : "基本资料",
             type : 2,
-            content : "personCenter.html",//页面自定义
+            content : "thisweb/lzhpersonCenter.jsp",//页面自定义
+            btn: ['提交','返回']
+            ,yes: function(index, layero){
+                var form =layer.getChildFrame('.layui-form',index);
+                var data=form.serialize();
+                $.ajax({
+                    url:"<%=request.getContextPath()%>/lzhUserInfo/uploadMainInfo.do",
+                    type:"post",
+                    data:data,
+                    success:function () {
+                        layer.close(index);
+                        layer.msg('提交成功', {icon: 1});
+                    }
+                })
+            },
+            btn2:function (index, layero) {
+                layer.close(index)
+                layer.msg('已返回', {icon: 6});
+            },
+            cancel: function(index, layero){
+                layer.close(index)
+                layer.msg('已关闭');
+            }
         });
     });
     // 修改密码
@@ -128,7 +156,33 @@
             area : [ '500px', '500px' ],
             title : "安全设置",
             type : 2,
-            content : "updatePwd.html",//页面自定义
+            content : "thisweb/updatePwd.jsp",//页面自定义
+            btn: ['提交','返回']
+            ,yes: function(index, layero){
+                var form =layer.getChildFrame('.layui-form',index);
+                var data=form.serialize();
+                $.ajax({
+                    url:"<%=request.getContextPath()%>/lzhUserInfo/updateUserMainPwd.do",
+                    type:"post",
+                    data:data,
+                    success:function (flag) {
+                        if (flag == 'passYes') {
+                            layer.close(index)
+                            layer.msg('修改成功', {icon: 1});
+                        }  else if (flag == 'passNo') {
+                            layer.msg('原密码不正确', {icon: 2});
+                        }
+                    }
+                })
+            },
+            btn2:function (index, layero) {
+                layer.close(index)
+                layer.msg('已返回', {icon: 6});
+            },
+            cancel: function(index, layero){
+                layer.close(index)
+                layer.msg('已关闭');
+            }
         });
     });
 
@@ -180,13 +234,7 @@
                 var is=data.length;
                var ht="";
                for(var i=0;i<is;i++){
-                   if (i==1)
-                   {
-                       ht+='<li class="layui-nav-item layui-nav-itemed">'
-                   }else {
-                       ht+='<li class="layui-nav-item">'
-                   }
-
+                 ht+='<li class="layui-nav-item">'
                  if(data[i].href!=null&&data[i].href!=0)
                  {
                      ht+="<a href='"+data[i].href+"' target='ifre'>"+data[i].name+"</a>"

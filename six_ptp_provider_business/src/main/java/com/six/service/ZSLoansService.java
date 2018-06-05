@@ -9,7 +9,7 @@ public interface ZSLoansService {
 
     long queryCount(Borrowingmanagement borrowingmanagement) throws Exception;
 
-    void addjiekuan(Borrowingmanagement borrowingmanagement) throws Exception;
+    Borrowingmanagement addjiekuan(Borrowingmanagement borrowingmanagement) throws Exception;
 
     Borrowingmanagement xiangqing(String jkid) throws Exception;
 

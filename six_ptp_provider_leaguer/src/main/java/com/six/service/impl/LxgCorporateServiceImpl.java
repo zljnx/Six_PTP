@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -62,12 +64,16 @@ public class LxgCorporateServiceImpl implements LxgCorporateService {
     }
     //注册
     @Override
-    public String saveuserinfo(UserInfo userInfo) {
+    public String saveuserinfo(UserInfo userInfo) throws Exception{
         String loginname = userInfo.getLoginname();
        String  userpwd = userInfo.getUserpwd();
 
         int count = lxgCorporateDao.LxgLogin(loginname,userpwd);
         if(count < 1){
+            Date date = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date time = sdf.parse(date.toLocaleString());
+            userInfo.setSendtime(time);
 
             lxgCorporateDao.saveuserinfo(userInfo);
 

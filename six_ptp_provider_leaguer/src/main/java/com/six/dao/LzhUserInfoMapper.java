@@ -2,6 +2,8 @@ package com.six.dao;
 
 import com.six.model.Amount;
 import com.six.model.UserInfo;
+import com.six.model.UserMain;
+import com.six.model.UserSex;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -280,4 +282,55 @@ public interface LzhUserInfoMapper {
      */
     @Select("select b.borrowing_amount,b.investment_amount from p2p_userinfo u,p2p_borrowing_record b where u.borrowingid =b.borrowing_id and u.id=#{id}")
     List<Amount> queryTreportforms(@Param("id") String id);
+    /**
+     * @Author 李中豪
+     * @Description TODO
+     * @Date 2018/5/31 22:45
+     * @Param [userInfo]
+     * @return com.six.model.UserInfo
+     */
+    @Select("select * from p2p_userinfo u,p2p_education e,p2p_workinfo w,p2p_areainfo a,p2p_car_information c,p2p_property_information p where u.workid=w.workid " +
+            "and u.educationid=e.eid and w.addrid=a.areaid and u.car_id=c.car_id and u.property_id=p.property_id and u.id=#{userInfo.id}")
+    UserInfo queryUserInfoh(@Param("userInfo") UserInfo userInfo);
+    /**
+     * @Author 李中豪
+     * @Description TODO
+     * @Date 2018/6/1 11:57
+     * @Param [fileUrl]
+     * @return void
+     */
+    @Update("UPDATE p2p_userinfo SET filename = #{fileUrl} WHERE id = #{userInfo.id}")
+    void saveUserPhoto(@Param("fileUrl") String fileUrl, @Param("userInfo") UserInfo userInfo);
+
+    @Select("select * from p2p_userinfo where id=#{id}")
+    List<UserInfo> queryUserImg(@Param("id") String id);
+    /**
+     * @Author 李中豪
+     * @Description TODO
+     * @Date 2018/6/4 9:19
+     * @Param [userInfo]
+     * @return void
+     */
+    @Update("UPDATE p2p_userinfo SET loginname = #{userInfo.loginname}, userphone=#{userInfo.userphone}, eamil=#{userInfo.eamil}  WHERE id = #{userInfo.id}")
+    void uploadMainInfo(@Param("userInfo") UserInfo userInfo);
+    /**
+     * @Author 李中豪
+     * @Description TODO
+     * @Date 2018/6/4 15:38
+     * @Param [userMain]
+     * @return java.util.List<com.six.model.UserInfo>
+     */
+    @Select("select * from p2p_userinfo u where u.userpwd=#{userMain.olduserpwd} and u.id = #{userMain.id}")
+    List<UserInfo> queryUserMainByPwd(@Param("userMain") UserMain userMain);
+    /**
+     * @Author 李中豪
+     * @Description TODO
+     * @Date 2018/6/4 15:38
+     * @Param [userMain]
+     * @return void
+     */
+    @Update("UPDATE p2p_userinfo SET userpwd=#{userMain.userpwd} WHERE id = #{userMain.id}")
+    void updateUserMainPwd(@Param("userMain") UserMain userMain);
+    @Select("SELECT sum(sex=0) boycount,SUM(sex=1) girlcount from p2p_userinfo ")
+    List<UserSex> queryUserSex();
 }

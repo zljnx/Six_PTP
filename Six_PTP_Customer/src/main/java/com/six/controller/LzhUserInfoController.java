@@ -2,18 +2,26 @@ package com.six.controller;
 
 import com.alibaba.dubbo.common.json.JSONArray;
 import com.alibaba.fastjson.JSON;
+import com.aliyun.oss.OSSClient;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.six.model.Amount;
 import com.six.model.UserInfo;
+import com.six.model.UserMain;
+import com.six.model.UserSex;
 import com.six.service.LzhUserInfoService;
+import com.six.util.AliyunOSSClientUtil;
 import com.six.util.ExportExcel;
+import com.six.util.OSSClientConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -254,5 +262,60 @@ public class LzhUserInfoController {
         List<Amount> list = lzhUserInfoService.queryTreportforms(id);
         return list;
     }
-
+    @RequestMapping("queryUserInfoh")
+    public String queryUserInfoh(UserInfo userInfo,HttpSession session){
+        try {
+            userInfo = lzhUserInfoService.queryUserInfoh(userInfo);
+            session.setAttribute("userInfo", userInfo);//session设值
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "thisweb/lzhAccount";
+    }
+    @RequestMapping(value="uploadPhoto",method=RequestMethod.POST)
+    public void uploadPhoto(MultipartFile file, UserInfo userInfo) throws Exception{
+        OSSClient ossClient = AliyunOSSClientUtil.getOSSClient();
+        String fileUrl=AliyunOSSClientUtil.uploadObject2OSS(ossClient,file,OSSClientConstants.BACKET_NAME,OSSClientConstants.FOLDER);
+        System.out.println(fileUrl);
+        lzhUserInfoService.saveUserPhoto(fileUrl,userInfo);
+    }
+    @RequestMapping("queryUserImg")
+    @ResponseBody
+    public List<UserInfo> queryUserImg(String id){
+        List<UserInfo> list = lzhUserInfoService.queryUserImg(id);
+        return list;
+    }
+    @RequestMapping("uploadMainInfo")
+    @ResponseBody
+    public void uploadMainInfo(UserInfo userInfo){
+        try {
+            lzhUserInfoService.uploadMainInfo(userInfo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @RequestMapping("updateUserMainPwd")
+    @ResponseBody
+    public String updateUserMainPwd(UserMain userMain){
+        String flag="";
+        try {
+            List<UserInfo> list = lzhUserInfoService.queryUserMainByPwd(userMain);
+            System.out.println(list);
+            if(list.size()==1){
+                lzhUserInfoService.updateUserMainPwd(userMain);
+                flag="passYes";
+            }else {
+                flag="passNo";
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+    @RequestMapping("queryUserSex")
+    @ResponseBody
+    public List<UserSex> queryUserSex() throws Exception{
+        List<UserSex> list = lzhUserInfoService.queryUserSex();
+        return list;
+    }
 }

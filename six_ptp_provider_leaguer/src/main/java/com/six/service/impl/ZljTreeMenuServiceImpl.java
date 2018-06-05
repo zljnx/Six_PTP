@@ -2,7 +2,6 @@ package com.six.service.impl;
 
 
 import com.alibaba.dubbo.config.annotation.Service;
-import com.six.common.ArticleSearchRepository;
 import com.six.dao.ZljTreeMenuMapper;
 import com.six.model.TreeMenu;
 import com.six.model.UserInfo;

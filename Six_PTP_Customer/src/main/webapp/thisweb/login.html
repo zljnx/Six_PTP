@@ -27,19 +27,7 @@
 <script type="text/javascript" src="js/user.js"></script>
 <script type="text/javascript" src="js/jquery-select-list.js"></script>
 <script type='text/javascript'>
-{
-    try {
-        var a = window.opener||window.parent;
-        while(a.parent!=a){
-            a = a.parent;
-        }
-        if(a.location.host!=''){
-            a.location.href='';
-        }
-    }catch(e){
 
-    }
-}
 var isTg = 'false';
 var escrowPrefix = 'ALLINPAY';
 var loginUrl = "";
@@ -96,7 +84,7 @@ function DMQQLogout(){
             <div class="logindx_k login_mod clearfix">
             	<div class="landing_port" >
                 <div class="login_hd"><span class="white f24 bold">用户登录</span></div>
-                <form action="/user/login.htm" method="post" onsubmit="return onSubmit();">
+                <form   method="post" onsubmit="return onSubmit();">
                 	<input type="hidden" id="_z" name="_z" value=""/>
                     <div class="login_form form_appearance clearfix">
                         <ul>
@@ -104,7 +92,7 @@ function DMQQLogout(){
                                 <div class="con">
                                     <div class="input focus_input">
                                         <i class="name_ico fl"></i>
-                                        <input id="txtUserId" type="text" class="text text1 focus_text fl" maxlength="30"
+                                        <input id="txtUserId" name="loginname" type="text" class="text text1 focus_text fl" maxlength="30"
                                                value=""
                                                onclick="hideError();"/><label for="txtUserId">用户名/邮箱/手机号</label>
                                         <input id="userId" name="accountName" type="hidden"/>
@@ -118,26 +106,19 @@ function DMQQLogout(){
                                 	<div class="wjmm_box">
                                     	<div class="input focus_input">
 	                                        <i class="password_ico fl"></i>
-	                                        <input id="txtpasswordId" type="password" class="text text3 focus_text fl" maxlength="20"
+	                                        <input id="txtpasswordId" name="userpwd" type="password" class="text text3 focus_text fl" maxlength="20"
 	                                               onselectstart="return false;" ondragenter="return false;"
 	                                               onpaste="return false;" onclick="hideError();" autocomplete="off"/><label for="txtpasswordId">密码</label>
 	                                        <input id="passwordId" name="password" type="hidden"/>
                                    		</div>
-                                   		<a class="yellow_color wjmm_text agreement_t" href="http://112.95.233.249:8503/password/">忘记密码?</a>
-                                    	<p class="prompt">&nbsp;</p>
+                                   		 
                                     	</div>
                                 </div>
                             </li>
-                            <li class="item pt5">
-                                <div class="con">
-                                	<label for="rememberId">
-                                    	<input id="rememberId" name="remember" type="checkbox" value="1" class="mr5" />记住用户名
-                                    </label>
-                                </div>
-                            </li>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <li class="item">
                                 <div class="con">
-                                    <button type="submit" class="login_bt mt10" style="cursor: pointer;">立即登录</button>
+                                    <button type="button" id ="loginButton"class="login_bt mt10" style="cursor: pointer;">立即登录</button>
                                  </div>
                             </li>
                     
@@ -157,17 +138,38 @@ function DMQQLogout(){
 <!--主体内容-->
 
 <!--底部结束-->
-<!--第三方流量统计 start-->
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script><!--第三方流量统计 end --><!--底部-->
+
 <script type="text/javascript" src="/user/js/security.js"></script>
+
+<script type="text/javascript">
+    $("#loginButton").click(function(){
+        if (accountCheck() && passwordCheck() && verifyCheck()) {
+            var loginname = $("#txtUserId").val();
+            var userpwd = $("#txtpasswordId").val();
+            $.ajax({
+                url:"/lxg/LxgLogin.do",
+                type:"post",
+                data:{loginname:loginname,userpwd:userpwd},
+                success:function(ddd){
+                    if(ddd=="kk"){
+                        alert("登陆成功");
+                        location.href="../";
+                    }else if("ddd==gg"){
+                        alert("用户不存在");
+                    }
+                },
+                error:function(){
+                    alert("用户名或密码错误");
+                }
+            })
+
+        }else{
+            alert("请按提示操作");
+        }
+    })
+
+</script>
+
 <script type="text/javascript">
     var isNull = /^[\s]{0,}$/;
     var verify = /^\d{6}$/;
@@ -295,7 +297,7 @@ var _hmt = _hmt || [];
 <script type="text/javascript">
 	var pic_list=[];
 	
-	pic_list.push({"img":"user/images/dlbg_pic.jpg","URL":"javascript:void(0);"});
+	pic_list.push({"img":"/images/dlbg_pic.jpg","URL":"javascript:void(0);"});
 	
 	var picnum=Math.floor(Math.random()*pic_list.length);
 	$("#RedBg").css({"background-image":"url("+pic_list[picnum].img+")"});

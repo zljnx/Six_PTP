@@ -3,6 +3,8 @@ package com.six.service.impl;
 import com.six.dao.LzhUserInfoMapper;
 import com.six.model.Amount;
 import com.six.model.UserInfo;
+import com.six.model.UserMain;
+import com.six.model.UserSex;
 import com.six.service.LzhUserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;import java.text.ParseException;
@@ -129,4 +131,39 @@ public class LzhUserInfoServiceImpl implements LzhUserInfoService {
     public List<Amount> queryTreportforms(String id) {
         return lzhUserInfoMapper.queryTreportforms(id);
     }
+    @Override
+    public UserInfo queryUserInfoh(UserInfo userInfo) {
+        return lzhUserInfoMapper.queryUserInfoh(userInfo);
+    }
+
+    @Override
+    public void saveUserPhoto(String fileUrl,UserInfo userInfo) {
+        lzhUserInfoMapper.saveUserPhoto(fileUrl,userInfo);
+    }
+
+    @Override
+    public List<UserInfo> queryUserImg(String id) {
+        return lzhUserInfoMapper.queryUserImg(id);
+    }
+
+    @Override
+    public void uploadMainInfo(UserInfo userInfo) {
+        lzhUserInfoMapper.uploadMainInfo(userInfo);
+    }
+
+    @Override
+    public List<UserInfo> queryUserMainByPwd(UserMain userMain) {
+        return lzhUserInfoMapper.queryUserMainByPwd(userMain);
+    }
+
+    @Override
+    public void updateUserMainPwd(UserMain userMain) {
+        lzhUserInfoMapper.updateUserMainPwd(userMain);
+    }
+
+    @Override
+    public List<UserSex> queryUserSex() {
+        return lzhUserInfoMapper.queryUserSex();
+    }
+
 }

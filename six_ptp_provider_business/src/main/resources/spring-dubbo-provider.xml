@@ -25,7 +25,7 @@
    <!-- 提供方应用名称信息，这个相当于起一个名字，我们dubbo管理页面比较清晰是哪个应用暴露出来的,保持唯一性 -->  
    <dubbo:application name="dubbo_provider"></dubbo:application>  
    <!-- 使用zookeeper注册中心暴露服务地址 -->    
-   <dubbo:registry address="zookeeper://127.0.0.1:2281" register="" check="false" subscribe="false" />
+   <dubbo:registry address="zookeeper://127.0.0.1:2181" register="" check="false" subscribe="false" />
    <!-- dubbo端口号 -->  
    <dubbo:protocol name="dubbo" port="20882" ></dubbo:protocol>
 	<dubbo:provider timeout="1000"></dubbo:provider>
@@ -37,6 +37,8 @@
 	<dubbo:service interface="com.six.service.ZSPersonalloanintentionService" ref="personalloanintentionService" timeout="30000"></dubbo:service>
 	<dubbo:service interface="com.six.service.ZSLoansService" ref="loansService" timeout="30000"></dubbo:service>
 	<dubbo:service interface="com.six.service.ZSShouYeService" ref="shouYeService" timeout="30000"></dubbo:service>
+	<dubbo:service interface="com.six.service.ZSOrderService" ref="orderService" timeout="30000"></dubbo:service>
+	<dubbo:service interface="com.six.service.ZSEchartsService" ref="echartsService" timeout="30000"></dubbo:service>
 	<dubbo:service interface="com.six.service.WhbRepaymentService" ref="whbRepaymentService" timeout="30000"></dubbo:service>
 	<dubbo:service interface="com.six.service.WhbRepaymentServiceTwo" ref="whbRepaymentServiceTwo" timeout="30000"></dubbo:service>
 	<dubbo:service interface="com.six.service.WhbXianShangOnetService" ref="whbXianShangOnetService" timeout="30000"></dubbo:service>
@@ -49,7 +51,6 @@
 	<dubbo:service interface="com.six.service.WhbContractService" ref="whbContractService" timeout="30000"></dubbo:service>
 	<dubbo:service interface="com.six.service.WhbLogService" ref="whbLogService" timeout="30000"></dubbo:service>
 	<dubbo:service interface="com.six.service.WhbAreasService" ref="whbAreasService" timeout="30000"></dubbo:service>
-<!--
 	<dubbo:service interface="com.six.service.WhbLogYiChangService" ref="whbLogYiChangService" timeout="30000"></dubbo:service>
--->
+
 </beans>

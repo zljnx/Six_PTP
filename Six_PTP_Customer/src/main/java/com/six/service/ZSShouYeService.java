@@ -1,9 +1,6 @@
 package com.six.service;
 
-import com.six.model.Borrowingmanagement;
-import com.six.model.Debenturetransfer;
-import com.six.model.UserInfo;
-import com.six.model.ZSTongJi;
+import com.six.model.*;
 import com.six.util.PageModel;
 
 import java.util.List;
@@ -21,4 +18,14 @@ public interface ZSShouYeService {
     List<Borrowingmanagement> tuijian() throws Exception;
 
     ZSTongJi tongji() throws Exception;
+
+    ShouYeXiangQing xiangqing(String xiangqing) throws Exception;
+
+    UserInfo mimayanzheng(String mima, String userid);
+
+    void shenqingtouzi(String userid, String jine, String jkid);
+
+    void updatajiekuan(String jkid, String jine);
+
+    void sorladd(Borrowingmanagement borrowingmanagement);
 }

@@ -38,6 +38,10 @@ public class WhbLogYiChangServiceImpl implements WhbLogYiChangService {
         query.skip(page);
         //rows每页条数
         query.limit(rows);//以上private 将 mongodbtemplate导入 ，，通过.  点出 find属性进行查数据
+
+        String isexception ="isexception";
+        query.addCriteria(Criteria.where(isexception).regex(".*?异常.*"));
+
         List<Logs> list=mongoTemplate.find(query, Logs.class);
         //查询总记录数  //同理
         long count=mongoTemplate.count(query, Logs.class);

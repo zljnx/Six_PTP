@@ -25,7 +25,7 @@ public class ZSLoansServiceImpl implements ZSLoansService{
     }
 
     @Override
-    public void addjiekuan(Borrowingmanagement borrowingmanagement) throws Exception {
+    public Borrowingmanagement addjiekuan(Borrowingmanagement borrowingmanagement) throws Exception {
        String productname  = borrowingmanagement.getProductname();
         String[] productname1 = productname.split("_");
         borrowingmanagement.setProductname(productname1[0]);
@@ -37,7 +37,14 @@ public class ZSLoansServiceImpl implements ZSLoansService{
         String city = borrowingmanagement.getCity();
         String[] city1 = city.split("_");
         borrowingmanagement.setCity(city1[0]);
-        loansDao.addjiekuan(borrowingmanagement);
+
+        if(borrowingmanagement.getJkstatus()==null||borrowingmanagement.getJkstatus()==""){
+            borrowingmanagement.setJkstatus("待审核");
+        }
+       Integer i = loansDao.addjiekuan(borrowingmanagement);
+        System.out.println(borrowingmanagement);
+
+        return borrowingmanagement;
     }
 
     @Override
@@ -68,5 +75,10 @@ public class ZSLoansServiceImpl implements ZSLoansService{
     @Override
     public void yufabu(String yufabutime,String jkid) throws Exception {
         loansDao.yufabu(yufabutime,jkid);
+    }
+
+    @Override
+    public void tuijian(String jkid) throws Exception {
+        loansDao.tuijian(jkid);
     }
 }
