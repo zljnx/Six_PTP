@@ -167,14 +167,26 @@
 
             <div class="clearfix">
                 <div class="head-container clearfix">
-
-                    <div class="head-login-container">
-                        <ul>
-                            <!--未登录-->
-                            <!--登录前-->
-
+                    <script type="text/javascript" src="/jquery/jqcookie/jquery.cookie.js"></script>
+                    <script type="text/javascript">
+                      $(document).ready(function(){
+                          var skey1= $.cookie("loginname");
+                        if(skey1!=null||skey1!=undefined) {
+                            $("#uluser").css("display","none")
+                            var ht="欢迎<ul><li class='li-btn'style='font-size: 16px;color: blue'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+skey1+"</li><li class='li-btn'style='font-size: 16px;color: blue'><a href='javascript:void(0)' onclick='onlogout()' class='login-btn'>注销</li></ul>"
+                            $("#uluserlo").html(ht)
+                        }
+                      });
+                      function  onlogout() {
+                          $.cookie("username",null);
+                          location.href="/thisweb/login.html";
+                      }
+                    </script>
+                    <div class="head-login-container" id="uluserlo">
+                        <ul id="uluser">
                             <li class="li-btn"><a href="/login/register.html" class="reg-btn">免费注册</a></li>
                             <li class="li-btn"><a href="/thisweb/login.html" class="login-btn">立即登录</a></li>
+
                         </ul>
                     </div>
                     <div class="top_bar"><a href="http://112.95.233.249:8503" class="icon sine-icon mr15"></a>
