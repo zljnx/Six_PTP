@@ -60,15 +60,16 @@ public class LxgCorporateController {
     //前台登录
     @ResponseBody
     @RequestMapping("LxgLogin")
-    public String LxgLogin(String loginname, String userpwd, HttpSession session) {
+    public  UserInfo  LxgLogin(String loginname, String userpwd, HttpSession session) {
         int count = lxgCorporateService.LxgLogin(loginname, userpwd);
+
         if (count == 1) {
             List<UserInfo> listuser = lxgCorporateService.queryLogin(loginname, userpwd);
             System.out.print(listuser);
             session.setAttribute("listuser", listuser.get(0));
-            return "kk";
+            return listuser.get(0);
         } else {
-            return "gg";
+            return null;
         }
     }
 
