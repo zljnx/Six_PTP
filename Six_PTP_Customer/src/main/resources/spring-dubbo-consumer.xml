@@ -33,6 +33,7 @@
 	<dubbo:reference id="ZSShouYeService" interface="com.six.service.ZSShouYeService"    />
 	<dubbo:reference id="ZSOrderService" interface="com.six.service.ZSOrderService"    />
 	<dubbo:reference id="ZSEchartsService" interface="com.six.service.ZSEchartsService"    />
+	<dubbo:reference id="ZSHouTaiTongJiService" interface="com.six.service.ZSHouTaiTongJiService"    />
 	<dubbo:reference id="WhbRepaymentService" interface="com.six.service.WhbRepaymentService"    />
 	<dubbo:reference id="WhbRepaymentServiceTwo" interface="com.six.service.WhbRepaymentServiceTwo"    />
 	<dubbo:reference id="WhbRepaymentServiceSan" interface="com.six.service.WhbRepaymentServiceSan"    />

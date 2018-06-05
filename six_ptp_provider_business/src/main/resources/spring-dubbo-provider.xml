@@ -39,6 +39,7 @@
 	<dubbo:service interface="com.six.service.ZSShouYeService" ref="shouYeService" timeout="30000"></dubbo:service>
 	<dubbo:service interface="com.six.service.ZSOrderService" ref="orderService" timeout="30000"></dubbo:service>
 	<dubbo:service interface="com.six.service.ZSEchartsService" ref="echartsService" timeout="30000"></dubbo:service>
+	<dubbo:service interface="com.six.service.ZSHouTaiTongJiService" ref="httjService" timeout="30000"></dubbo:service>
 	<dubbo:service interface="com.six.service.WhbRepaymentService" ref="whbRepaymentService" timeout="30000"></dubbo:service>
 	<dubbo:service interface="com.six.service.WhbRepaymentServiceTwo" ref="whbRepaymentServiceTwo" timeout="30000"></dubbo:service>
 	<dubbo:service interface="com.six.service.WhbXianShangOnetService" ref="whbXianShangOnetService" timeout="30000"></dubbo:service>

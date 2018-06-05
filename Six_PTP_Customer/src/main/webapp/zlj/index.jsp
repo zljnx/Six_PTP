@@ -11,6 +11,7 @@
 <html>
 <head>
     <title>黄金杯-后台系统</title>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.9.1.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
     <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
@@ -99,7 +100,7 @@
                         <li>
                             <div class="agency-li-box">
                                 <h3 class="gray3 f36"><a
-                                        href="/console/bid/loanmanage/jkgl/loanList.htm?status=DSH" class="link_url" showObj="BDGL" data-title="business">0</a>
+                                        href="#" class="link_url" showObj="BDGL" data-title="business" id="dshjkxm"></a>
                                 </h3>
                                 <p class="gray6 f16">待审核借款项目（个）</p>
                             </div>
@@ -107,7 +108,7 @@
                         <li>
                             <div class="agency-li-box">
                                 <h3 class="gray3 f36">
-                                    <a href="/console/bid/loanmanage/grjkyx/grjkyxList.htm?loanIntentionState=WCL" class="link_url" showObj="GRJKYX" data-title="business">1</a>
+                                    <a href="#" class="link_url" showObj="GRJKYX" data-title="business" id="dclgrjkyx"></a>
                                 </h3>
 
                                 <p class="gray6 f16">待处理的个人借款意向（个）</p>
@@ -116,7 +117,7 @@
                         <li>
                             <div class="agency-li-box">
                                 <h3 class="gray3 f36">
-                                    <a href="/console/bid/loanmanage/jkgl/loanList.htm?status=DFB" class="link_url" showObj="BDGL" data-title="business">0</a>
+                                    <a href="#" class="link_url" showObj="BDGL" data-title="business" id="dfbjkxm"></a>
                                 </h3>
 
                                 <p class="gray6 f16">待发布的借款项目（个）</p>
@@ -125,7 +126,7 @@
                         <li>
                             <div class="agency-li-box">
                                 <h3 class="gray3 f36">
-                                    <a href="/console/bid/loanmanage/qyjkyx/qyjkyxList.htm?loanIntentionState=WCL" class="link_url" showObj="QYJKYX" data-title="business">0</a>
+                                    <a href="#" class="link_url" showObj="QYJKYX" data-title="business" id="dclqyjkyx"></a>
                                 </h3>
 
                                 <p class="gray6 f16">待处理的企业借款意向（个）</p>
@@ -134,16 +135,16 @@
                         <li>
                             <div class="agency-li-box">
                                 <h3 class="gray3 f36">
-                                    <a href="/console/finance/zjgl/fksh/fkshList.htm?fundStatus=1" class="link_url" showObj="FKGL" data-title="finance">0</a>
+                                    <a href="#" class="link_url" showObj="FKGL" data-title="finance" id="dfkjkxm"></a>
                                 </h3>
 
                                 <p class="gray6 f16">待放款的借款项目（个）</p>
                             </div>
                         </li>
-                        <li>
+                       <%-- <li>
                             <div class="agency-li-box">
                                 <h3 class="gray3 f36">
-                                    <a href="/console/account/vipmanage/grxx/grList.htm?dshFlg=DSH" class="link_url" showObj="GRXX" data-title="user">0</a>
+                                    <a href="#" class="link_url" showObj="GRXX" data-title="user"></a>
                                 </h3>
 
                                 <p class="gray6 f16">待审核的认证信息（个）</p>
@@ -184,10 +185,27 @@
 
                                 <p class="gray6 f16">债权转让审核（笔）</p>
                             </div>
-                        </li>
+                        </li>--%>
                     </ul>
                 </div>
             </div>
+
+            <script type="application/javascript">
+                $(function(){
+                    $.ajax({
+                        url:"<%=request.getContextPath()%>/httongji/houtaishouye.do",
+                        type:"post",
+                        success:function(data){
+                           $("#dshjkxm").html(data.dshjkxm);
+                           $("#dclgrjkyx").html(data.dclgrjkyx);
+                           $("#dfbjkxm").html(data.dfbjkxm);
+                           $("#dfkjkxm").html(data.dfkjkxm);
+                           $("#dclqyjkyx").html(data.dclqyjkyx);
+                        }
+                    })
+                })
+
+            </script>
 
             <!--首页内容 结束-->
         </div>
