@@ -175,7 +175,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="modular02">
+               <%-- <li class="modular02">
                     <div class="top"></div>
                     <div class="content clearfix">
                         <div class="mo_left">
@@ -203,7 +203,7 @@
                         </div>
                         </div>
                     </div>
-                </li>
+                </li>--%>
             </ul>
         </div>
     </div>
