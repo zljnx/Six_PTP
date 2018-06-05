@@ -99,7 +99,7 @@
 <div class="top-container">
     <div class="wrap">
         <div class="top-center">
-            <div class="logo-container"><a href="http://112.95.233.249:8503"><img   title="黄金杯网贷"></a></div>
+
             <div class="clearfix">
                 <div class="head-container clearfix">
                     <div class="head-login-container">
@@ -158,7 +158,7 @@
         <div class="main_tab">
             <ul class="clearfix">
                 <li class="hover" value="1" id="busi_li">投资列表</li>
-                <li class="normalMenu" value="3" id="busi_li_zq"><a href="javascript:void(0);">债权转让</a></li>
+              <%--  <li class="normalMenu" value="3" id="busi_li_zq"><a href="javascript:void(0);">债权转让</a></li>--%>
             </ul>
         </div>
         <div class="bd jtab-con">
@@ -248,7 +248,7 @@
                                     " <td><span class=\"f18 gray3\">"+result[i].jkAmount+"</span>元</td><td><span class=\"f18 gray3\">"+result[i].jkapr+"</span>%</td>\n" +
                                     " <td><span class=\"f18 gray3\">"+result[i].jkdeadline+"</span></td><td><span class=\"f18 gray3\">"+result[i].jkAmount+"</span>元</td>\n" +
                                     "  <td><div class=\"progress mt10\"><div></div><span class=\"progress_bg\"><span class=\"progress_bar\" style=\"width:0%;\"></span></span><span class=\"cent\">0%</span></div></td>\n" +
-                                    "  <td><a class=\"btn06 btn_gray btn_disabled\" href=\"javascript:void(0);\">正在开发</a></td> </td></tr>"
+                                    "  <td><a class=\"btn06 \" href=\"javascript:void(0);\" onclick='xiangqing1("+result[i].jkid+")'>立即投资</a></td> </td></tr>"
 
                                 }
                                 /*}*/
@@ -262,7 +262,9 @@
 
                     })
                 }
-
+              function xiangqing1(id){
+                  location.href="<%=request.getContextPath()%>/shouye/xiangqing.do?xiangqing="+id;
+              }
 
               var GG = {
                   "kk":function(mm){

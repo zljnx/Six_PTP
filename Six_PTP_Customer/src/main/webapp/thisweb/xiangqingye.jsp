@@ -220,7 +220,6 @@
     <div class="item_details_top w1002 clearfix">
         <div class="left">
             <div class="til" >
-                <span class="item_icon novice_icon">新</span>
                 <span class="item_icon dan_icon">保</span>
                 ${xiangqing.xmname}</div>
 
