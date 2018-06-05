@@ -323,8 +323,7 @@
             </script>
             <div class=" item_list">
                 <div class="main_hd">
-                    <a target="_blank" href="/credit/lcjsq.htm"
-                       class="calculator_ico fr"><i></i>理财计算器</a>
+
                     <i class="icon"></i><span id="tzlb_title" class="gray3 f18">投资列表</span>
                 </div>
                 <div class="total">

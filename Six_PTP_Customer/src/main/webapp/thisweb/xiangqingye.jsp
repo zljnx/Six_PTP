@@ -361,6 +361,7 @@
                                 alert("下蛋成功！咯咯咯！");
                                 $("#mimaaaaaaa").val(null);
                                 $("#shurumima").hide();
+                                location.reload();
                             }else {
                                 alert("交易密码错误！")
                             }
