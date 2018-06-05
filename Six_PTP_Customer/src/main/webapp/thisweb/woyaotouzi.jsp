@@ -27,25 +27,13 @@
 <script type="text/javascript" src="/js/jquery-1.9.1.js"></script>
 <script type="text/javascript">
     <!--//
-    {
-        try {
-            var a = window.opener || window.parent;
-            while (a.parent != a) {
-                a = a.parent;
-            }
-            if (a.location.host != '112.95.233.249:8503') {
 
-            }
-        }catch(e){
-
-        }
-    }
     $(function(){$("#nav").click(function(e){var src = e?e.target:event.srcElement;if(src.tagName == "H3"){var next = src.nextElementSibling || src.nextSibling;next.style.display = (next.style.display =="block")?"none":"block";}});});
     function setTab(name,cursel,n){for(var i=1;i<=n;i++){var menu=document.getElementById(name+i);var con=document.getElementById("con_"+name+"_"+i);menu.className=i==cursel?"hover":"";con.style.display=i==cursel?"block":"none";}}
     $(".ny_register .til").click(function(){$(this).next().slideToggle("slow,10");if($(this).hasClass("up")){$(this).removeClass("up");}else{$(this).addClass("up");}});
     //-->
 </script><script type="text/javascript" src="/js/dialog.js"></script>
-<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101173448"  data-redirecturi="http://112.95.233.249:8503/associatedRegister.html"  charset="utf-8"> </script>
+<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101173448"     charset="utf-8"> </script>
 <script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" charset="utf-8"  data-callback="true"></script>
 <script type="text/javascript" src="/js/jquery-select-list.js"></script>
 <script type="text/javascript" src="/simple/js/common.js"></script>
@@ -104,8 +92,9 @@
                         <ul>
                             <!--未登录-->
                             <!--登录前-->
-                            <li class="li-btn"><a href="http://112.95.233.249:8503/register.html" class="reg-btn">免费注册</a></li>
-                            <li class="li-btn"><a href="http://112.95.233.249:8503/user/login.html" class="login-btn">立即登录</a></li>
+                            <li class="li-btn"><a href="/login/register.html" class="reg-btn">免费注册</a></li>
+                            <li class="li-btn"><a href="/thisweb/login.html" class="login-btn">立即登录</a></li>
+
                         </ul>
                     </div>
                     <div class="top_bar"><a href="http://112.95.233.249:8503" class="icon sine-icon mr15"></a>
@@ -159,7 +148,7 @@
                         <div class="mo_left">
                             <div class="con">
                                 <i class="ico ico04"></i>
-                                <p class="text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">散标投资</font></font></p>
+                                <p class="text"style="color: #171819"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">散标投资</font></font></p>
 
                             </div>
                         </div>
@@ -193,7 +182,7 @@
                             <div class="con">
                                 <i class="ico ico05"></i>
 
-                                <p class="text">债权转让</p>
+                                <p class="text" style="color: #171819">债权转让</p>
                             </div>
                         </div>
                         <div class="mo_right">
@@ -208,7 +197,7 @@
                                 </ul>
                             </div><div class="immediate">
                             <div class="con">
-                                <a href="http://112.95.233.249:8503/financing/sbtz/index.html?btype=3"
+                                <a href="<%=request.getContextPath()%>/thisweb/touziorzhuanrang.jsp"
                                    class="btn06">去购买</a>
                             </div>
                         </div>
@@ -263,15 +252,5 @@
             <a href="#"><img src="../images/footer_46.jpg"></a></div>
     </div>
 </div>
-<!--底部结束-->
-<!--第三方流量统计 start-->
-<script>
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "//hm.baidu.com/hm.js?86d304fa5d25c231be274f4372eff9b5";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script><!--第三方流量统计 end --></body>
+ </body>
 </html>

@@ -121,7 +121,7 @@ public class ZSShouYeServiceImpl implements ZSShouYeService{
 
             borr1.setProductname(solrDocument.get("productname").toString());
             borr1.setJkstatus(solrDocument.get("jkstatus").toString());
-            borr1.setJkBorrowingtitle(solrDocument.get("jkBorrowingtitle").toString());
+
             borr1.setJkapr(solrDocument.get("jkapr").toString());
             borr1.setJkid(Integer.valueOf(solrDocument.get("jkid").toString()));
             borr1.setJkAmount(Double.valueOf(solrDocument.get("jkAmount").toString()));

@@ -53,20 +53,7 @@
 <script type="text/javascript">try{document.getElementById('a3b299a7-a69c-4bb8-8185-28a3abfa7cf3').style.display='none';}catch(e){}</script>
 
 <script type="text/javascript">
-    <!--//
-    {
-        try {
-            var a = window.opener || window.parent;
-            while (a.parent != a) {
-                a = a.parent;
-            }
-            if (a.location.host != '112.95.233.249:8503') {
 
-            }
-        }catch(e){
-
-        }
-    }
     $(function(){$("#nav").click(function(e){var src = e?e.target:event.srcElement;if(src.tagName == "H3"){var next = src.nextElementSibling || src.nextSibling;next.style.display = (next.style.display =="block")?"none":"block";}});});
     function setTab(name,cursel,n){for(var i=1;i<=n;i++){var menu=document.getElementById(name+i);var con=document.getElementById("con_"+name+"_"+i);menu.className=i==cursel?"hover":"";con.style.display=i==cursel?"block":"none";}}
     $(".ny_register .til").click(function(){$(this).next().slideToggle("slow,10");if($(this).hasClass("up")){$(this).removeClass("up");}else{$(this).addClass("up");}});
@@ -183,8 +170,8 @@
                         <ul>
                             <!--未登录-->
                             <!--登录前-->
-                            <li class="li-btn"><a href="http://112.95.233.249:8503/register.html" class="reg-btn">免费注册</a></li>
-                            <li class="li-btn"><a href="http://112.95.233.249:8503/user/login.html" class="login-btn">立即登录</a></li>
+                            <li class="li-btn"><a href="/login/register.html" class="reg-btn">免费注册</a></li>
+                            <li class="li-btn"><a href="/thisweb/login.html" class="login-btn">立即登录</a></li>
                         </ul>
                     </div>
                     <div class="top_bar"><a href="http://112.95.233.249:8503" class="icon sine-icon mr15"></a>
@@ -194,9 +181,9 @@
                                     关注黄金杯网贷微信 </div>
                             </div>
                         </a>
-                        <a href="http://112.95.233.249:8503/bzzx/xszy.html">新手指引</a> |
-                        <a href="http://112.95.233.249:8503/bzzx/czytx.html">帮助中心</a> |
-                        <a href="http://112.95.233.249:8503/app/downloadApp.htm">手机客户端
+                        <a href=" ">新手指引</a> |
+                        <a href=" ">帮助中心</a> |
+                        <a href=" ">手机客户端
                             <div class="code tc"><i class="arrow"></i>
                                 <div class="border">
                                     <img src="/fileStore/0/2017/1/5/150.png"><br />下载客户端APP
@@ -272,7 +259,7 @@
                 </ul>
             </div>
         </div>
-        <a href="http://112.95.233.249:8503/zxdt/index.html" class="fr">更多 ></a>
+        <a href="" class="fr">更多 ></a>
     </div>
 
 </div>
@@ -338,7 +325,7 @@
                     </div>
                 </li>
                 <li>
-                    <div class="item-box" onclick="location.href='http://112.95.233.249:8503/gywm/fklc.html'">
+                    <div class="item-box" >
                         <div class="pic pic-03"></div>
                         <h3 class="f20 tc">资金安全</h3>
                         <p>所有投资标的100%适用本息保障计划，如遇贷款人违约，黄金杯网贷将通过风险备用金有效保障理财人的本息安全。</p>
@@ -615,9 +602,9 @@
                 </script>
                 <!--investment list end-->
                 <div id="info"></div>
-                <form method="post" class="form1" name="zqzrForm" id="zqzrForm" action="http://112.95.233.249:8503/user/bid/zqzr.htm" >
+                <form method="post" class="form1" name="zqzrForm" id="zqzrForm"  >
                     <input type="hidden" name="2c894a14-9399-41cb-9a23-c34081
-            9b4565" value="ebb0cc00-a0ce-4782-bac5-daf281ded5ac"><input type="hidden" id="zqSucc" name="zqSucc" value="http://112.95.233.249:8503/user/financing/zqzr/zqyzr.html">
+            9b4565" value="ebb0cc00-a0ce-4782-bac5-daf281ded5ac"><input type="hidden" id="zqSucc" name="zqSucc" value="">
                     <input type="hidden" name="zqzrId" id="zqzrId">
                     <div class="popup_bg"  style="display: none;"></div>
                     <div class="dialog d_error w510" style="margin:-150px 0 0 -255px; display: none;" >
@@ -779,22 +766,7 @@
 
 
 
-                    function sbtzCountdown(F13Time,id) {
-                        //去掉此倒计时操作，只在详情页倒计时
-                        /*var date = new Date();
-                        var timeamp = '1527505872000';
-                        date.setTime(F13Time);
-                        var sbtzEndTime = date.getTime()-timeamp;
-                        setInterval(function() {
-                            sbtzEndTime = sbtzEndTime - 1000;
-                            var time = sbtzEndTime;
-                            //sbtzTime(time,id);
-                            if(time <= 0){
-                                clearInterval(this);
-                                location.reload();
-                            }
-                        }, 1000);*/
-                    }
+
 
                     function sbtzTime(sbtzEndTime,id) {
                         var leftsecond = parseInt(sbtzEndTime / 1000);
@@ -831,7 +803,7 @@
                     <div class="media">
                         <div class="new-hd"><a href="#" class="more">更多></a>
                             <span class="media_title">媒体报道</span></div>
-                        <div class="" id="aaa" style="width:700px" align="left">
+                        <div class="" id="aaa" style="width:700px;font-size: 16px;line-height: 35px" align="left">
 
                         </div>
                     </div>
@@ -1041,17 +1013,7 @@
                 <a href="#"><img src="../images/footer_46.jpg"></a></div>
         </div>
     </div>
-    <!--底部结束-->
-    <!--第三方流量统计 start-->
-    <script>
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?86d304fa5d25c231be274f4372eff9b5";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script><!--第三方流量统计 end --><script type="text/javascript" src="/js/validation.js"></script>
+     <script type="text/javascript" src="/js/validation.js"></script>
     <script type="text/javascript" src="/js/percentage.js"></script>
     <script type="text/javascript" src="/simple/js/index.js"></script>
 </body>

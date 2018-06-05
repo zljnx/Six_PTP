@@ -9,11 +9,11 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface WhbAreaMapper {
-    @Insert("insert into p2p_personalloanintention (username,userphone,grAmount,grdeadline,grjktype,grFundraisingdeadline,grjkdescribe) " +
-            "values (#{username},#{userphone},#{grAmount},#{grdeadline},#{grjktype},#{grFundraisingdeadline},#{grjkdescribe})")
+    @Insert("insert into p2p_personalloanintention (username,userphone,grAmount,grdeadline,grjktype,grFundraisingdeadline,grjkdescribe,grsubmittime) " +
+            "values (#{username},#{userphone},#{grAmount},#{grdeadline},#{grjktype},#{grFundraisingdeadline},#{grjkdescribe},NOW())")
     void addGeRenArea(Personalloanintention personalloanintention);
 
-    @Insert("insert into p2p_personalloanintention (firmname,registrationnumber,username,userphone,grAmount,grdeadline,grjktype,grFundraisingdeadline,grjkdescribe) " +
-            "values (#{firmname},#{registrationnumber},#{username},#{userphone},#{grAmount},#{grdeadline},#{grjktype},#{grFundraisingdeadline},#{grjkdescribe})")
+    @Insert("insert into p2p_personalloanintention (firmname,registrationnumber,username,userphone,grAmount,grdeadline,grjktype,grFundraisingdeadline,grjkdescribe,grsubmittime) " +
+            "values (#{firmname},#{registrationnumber},#{username},#{userphone},#{grAmount},#{grdeadline},#{grjktype},#{grFundraisingdeadline},#{grjkdescribe},NOW())")
     void addQiYeArea(Personalloanintention personalloanintention);
 }

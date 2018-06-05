@@ -99,15 +99,15 @@
 <div class="top-container">
     <div class="wrap">
         <div class="top-center">
-            <div class="logo-container"><a href="http://112.95.233.249:8503"><img src="/images/logo.jpg" title="黄金杯网贷"></a></div>
+            <div class="logo-container"><a href="http://112.95.233.249:8503"><img   title="黄金杯网贷"></a></div>
             <div class="clearfix">
                 <div class="head-container clearfix">
                     <div class="head-login-container">
                         <ul>
                             <!--未登录-->
                             <!--登录前-->
-                            <li class="li-btn"><a href="http://112.95.233.249:8503/register.html" class="reg-btn">免费注册</a></li>
-                            <li class="li-btn"><a href="http://112.95.233.249:8503/user/login.html" class="login-btn">立即登录</a></li>
+                            <li class="li-btn"><a href="/login/register.html" class="reg-btn">免费注册</a></li>
+                            <li class="li-btn"><a href="/thisweb/login.html" class="login-btn">立即登录</a></li>
                         </ul>
                     </div>
                     <div class="top_bar"><a href="http://112.95.233.249:8503" class="icon sine-icon mr15"></a>
